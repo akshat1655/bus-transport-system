@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: bus-db
+    restart: always
+    environment:
+      MYSQL_DATABASE: bus_transport
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    container_name: bus-backend
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/bus_transport?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=rootpassword
+      - SPRING_DATASOURCE_DRIVERCLASSNAME=com.mysql.cj.jdbc.Driver
+      - SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.MySQLDialect
+      - SPRING_SQL_INIT_MODE=always
+      - SPRING_SQL_INIT_SCHEMA_LOCATIONS=classpath:schema.sql
+      - SPRING_SQL_INIT_DATA_LOCATIONS=classpath:data.sql
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    container_name: bus-frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  mysql_data:
