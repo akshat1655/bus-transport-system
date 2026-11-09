@@ -11,10 +11,7 @@ import java.util.List;
 @Repository
 public interface TripRepository extends JpaRepository<Trip, Long> {
     
-    @Query("SELECT t FROM Trip t WHERE " +
-           "(LOWER(TRIM(t.route.source)) = LOWER(TRIM(:source)) OR EXISTS (SELECT s1 FROM Stop s1 WHERE s1.route = t.route AND LOWER(TRIM(s1.stopName)) = LOWER(TRIM(:source)))) AND " +
-           "(LOWER(TRIM(t.route.destination)) = LOWER(TRIM(:destination)) OR EXISTS (SELECT s2 FROM Stop s2 WHERE s2.route = t.route AND LOWER(TRIM(s2.stopName)) = LOWER(TRIM(:destination)))) AND " +
-           "t.departureTime BETWEEN :start AND :end AND t.tripStatus <> 'CANCELLED'")
+    @Query("SELECT t FROM Trip t WHERE LOWER(TRIM(t.route.source)) = :source AND LOWER(TRIM(t.route.destination)) = :destination AND t.departureTime BETWEEN :start AND :end AND t.tripStatus <> 'CANCELLED'")
     List<Trip> searchTrips(
         @Param("source") String source, 
         @Param("destination") String destination, 

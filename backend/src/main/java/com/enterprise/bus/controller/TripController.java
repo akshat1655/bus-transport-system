@@ -65,8 +65,8 @@ public class TripController {
             @RequestParam String destination,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
 
-        String cleanSource = source != null ? source.trim() : "";
-        String cleanDest = destination != null ? destination.trim() : "";
+        String cleanSource = source != null ? source.trim().toLowerCase() : "";
+        String cleanDest = destination != null ? destination.trim().toLowerCase() : "";
 
         LocalDateTime startOfDay = date.atStartOfDay();
         LocalDateTime endOfDay = date.atTime(LocalTime.MAX);
