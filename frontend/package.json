@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.3",
-    "@rollup/rollup-win32-x64-msvc": "^4.60.4",
     "axios": "^1.6.8",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.378.0",
