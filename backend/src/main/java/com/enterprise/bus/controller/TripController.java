@@ -65,10 +65,13 @@ public class TripController {
             @RequestParam String destination,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
 
+        String cleanSource = source != null ? source.trim() : "";
+        String cleanDest = destination != null ? destination.trim() : "";
+
         LocalDateTime startOfDay = date.atStartOfDay();
         LocalDateTime endOfDay = date.atTime(LocalTime.MAX);
 
-        List<Trip> trips = tripRepository.searchTrips(source, destination, startOfDay, endOfDay);
+        List<Trip> trips = tripRepository.searchTrips(cleanSource, cleanDest, startOfDay, endOfDay);
         List<Map<String, Object>> response = trips.stream().map(trip -> {
             List<Booking> bookings = bookingRepository.findByTripId(trip.getId());
             List<String> bookedSeats = bookings.stream()

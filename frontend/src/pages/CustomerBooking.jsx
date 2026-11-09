@@ -66,7 +66,13 @@ export default function CustomerBooking() {
     setPassengers([]);
     
     try {
-      const res = await api.get(`/api/trips/search?source=${source}&destination=${destination}&date=${date}`);
+      const res = await api.get('/api/trips/search', {
+        params: {
+          source: source.trim(),
+          destination: destination.trim(),
+          date
+        }
+      });
       setTrips(res.data);
     } catch (err) {
       setError('Could not find trips for selected endpoints.');
