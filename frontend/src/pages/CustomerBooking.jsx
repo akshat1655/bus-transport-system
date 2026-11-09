@@ -872,44 +872,46 @@ export default function CustomerBooking() {
       )}
 
       {/* 5. Contact Information Banner */}
-      <div className="mt-12 p-8 rounded-3xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border shadow-sm">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-          <div>
+      <div className="mt-12 p-6 md:p-8 rounded-3xl bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border shadow-sm">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div className="max-w-md">
             <h3 className="text-lg font-bold text-slate-800 dark:text-white">Rajni Bus Service Support</h3>
             <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
               Have questions or need assistance with your booking? Reach out to our 24/7 help desk.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full md:w-auto">
-            <div className="flex items-center gap-3 p-4 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-100 dark:border-dark-border">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 w-full lg:w-auto">
+            <div className="flex items-center gap-3.5 p-4 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-100 dark:border-dark-border min-w-[210px]">
               <div className="w-10 h-10 rounded-xl bg-brand-500/10 dark:bg-brand-500/20 flex items-center justify-center text-brand-600 dark:text-brand-400 shrink-0">
                 <Phone className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-[10px] text-slate-400 uppercase font-semibold">Call Us</p>
-                <p className="text-sm font-bold text-slate-800 dark:text-white mt-0.5">+91 7987761655</p>
+                <p className="text-[10px] text-slate-400 uppercase font-semibold tracking-wider">Call Us</p>
+                <a href="tel:+917987761655" className="text-sm font-bold text-slate-800 dark:text-white hover:text-brand-600 transition-colors mt-0.5 block whitespace-nowrap">
+                  +91 7987761655
+                </a>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-4 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-100 dark:border-dark-border min-w-0">
+            <div className="flex items-center gap-3.5 p-4 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-100 dark:border-dark-border min-w-[230px]">
               <div className="w-10 h-10 rounded-xl bg-violet-500/10 dark:bg-violet-500/20 flex items-center justify-center text-violet-600 dark:text-violet-400 shrink-0">
                 <Mail className="w-5 h-5" />
               </div>
-              <div className="min-w-0 flex-1">
-                <p className="text-[10px] text-slate-400 uppercase font-semibold">Email Us</p>
-                <a href="mailto:akshatjain1655@gmail.com" className="text-xs md:text-sm font-bold text-slate-800 dark:text-white hover:text-brand-500 transition-colors mt-0.5 block break-all">
+              <div>
+                <p className="text-[10px] text-slate-400 uppercase font-semibold tracking-wider">Email Us</p>
+                <a href="mailto:akshatjain1655@gmail.com" className="text-xs sm:text-sm font-bold text-slate-800 dark:text-white hover:text-brand-500 transition-colors mt-0.5 block whitespace-nowrap">
                   akshatjain1655@gmail.com
                 </a>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-4 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-100 dark:border-dark-border">
+            <div className="flex items-center gap-3.5 p-4 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-100 dark:border-dark-border min-w-[210px] sm:col-span-2 xl:col-span-1">
               <div className="w-10 h-10 rounded-xl bg-emerald-500/10 dark:bg-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
                 <MapPin className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-[10px] text-slate-400 uppercase font-semibold">Head Office</p>
-                <p className="text-xs font-bold text-slate-800 dark:text-white mt-0.5 leading-tight">
+                <p className="text-[10px] text-slate-400 uppercase font-semibold tracking-wider">Head Office</p>
+                <p className="text-xs sm:text-sm font-bold text-slate-800 dark:text-white mt-0.5 leading-snug whitespace-nowrap">
                   Fortune Ambience, Indore
                 </p>
               </div>
